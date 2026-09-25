@@ -1,0 +1,85 @@
+# Source of truth for AWS services this skill recognizes and which report fields apply to each.
+# Add a service here instead of hardcoding its name in SKILL.md or output-template.md.
+#
+# Schema: `services` is a map keyed by a lowercase, no-space id (used only for lookup; never
+# printed). Each entry is:
+#   heading:  display name for report headings, e.g. "### Lambda: `<resource-name>`"
+#   category: grouping label, informational only (not rendered in the report)
+#   fields:   which report bullets apply, in render order — always a subset of
+#             [settings, iam, env]; `settings` is effectively mandatory, `iam` and `env` are
+#             opt-in per service (e.g. only Lambda has `env`)
+#
+# Render only the fields listed for a service; a service without `env` never gets an Env bullet.
+
+services:
+  lambda:
+    heading: Lambda
+    category: Compute
+    fields: [settings, iam, env]
+  ecs:
+    heading: ECS
+    category: Compute
+    fields: [settings, iam]
+  fargate:
+    heading: Fargate
+    category: Compute
+    fields: [settings, iam]
+
+  sqs:
+    heading: SQS
+    category: Integration & Messaging
+    fields: [settings, iam]
+  eventbridge:
+    heading: EventBridge
+    category: Integration & Messaging
+    fields: [settings, iam]
+  sns:
+    heading: SNS
+    category: Integration & Messaging
+    fields: [settings, iam]
+  stepfunctions:
+    heading: StepFunctions
+    category: Integration & Messaging
+    fields: [settings, iam]
+
+  dynamodb:
+    heading: DynamoDB
+    category: Database
+    fields: [settings, iam]
+  rds:
+    heading: RDS
+    category: Database
+    fields: [settings, iam]
+  elasticache:
+    heading: ElastiCache
+    category: Database
+    fields: [settings, iam]
+
+  s3:
+    heading: S3
+    category: Storage & Other
+    fields: [settings, iam]
+  ecr:
+    heading: ECR
+    category: Storage & Other
+    fields: [settings, iam]
+  apigateway:
+    heading: API Gateway
+    category: Storage & Other
+    fields: [settings, iam]
+  cloudwatch:
+    heading: CloudWatch
+    category: Storage & Other
+    fields: [settings, iam]
+  kms:
+    heading: KMS
+    category: Storage & Other
+    fields: [settings, iam]
+  vpcendpoints:
+    heading: VPC Endpoints
+    category: Storage & Other
+    fields: [settings, iam]
+  route53:
+    heading: Route53
+    category: Storage & Other
+    fields: [settings, iam]
