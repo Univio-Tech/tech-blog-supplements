@@ -57,8 +57,8 @@ skip every step marked _(live AWS)_, and omit live-AWS tags from the report.
    printed absolute path (`pwd -W` gives a Windows path under Git Bash):
    ```bash
    TF_DIR="$(cd "$(mktemp -d)" && { pwd -W 2>/dev/null || pwd; })"
-   glab repo clone terraform/bricomarche "$TF_DIR/bricomarche-terraform"
-   echo "$TF_DIR/bricomarche-terraform"
+   glab repo clone terraform/ "$TF_DIR/-terraform"
+   echo "$TF_DIR/-terraform"
    ```
    Search modules, IAM, names, tags, outputs; name the owning module and environment. If access
    fails, mark matching entries `UNVERIFIED`; claim absence only after a successful search.
